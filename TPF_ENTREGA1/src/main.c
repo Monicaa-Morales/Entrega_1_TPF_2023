@@ -6,7 +6,7 @@ int tablero[5][5];
 char tablero_color[5][5];
 #include "functions.h"
 int main(){
-	int inicio_turno;
+
     int modo = 0;
     int maquina = 0;
     char jugador_color;
@@ -23,9 +23,9 @@ int main(){
         while(opcion_color != 1 && opcion_color!= 2){
         printf("Seleccione su color:\n");
         printf("1.\x1b[31mRojo.\n");
-        printf("\x1b[30m");
+        printf("\x1B[37m");
         printf("2.\x1b[32mVerde.\n");
-        printf("\x1b[30m");
+        printf("\x1B[37m");
         scanf("%d",&opcion_color);
         }
 
@@ -34,12 +34,15 @@ int main(){
         }else{
         	jugador_color = ROJO;
         }
+        int inicio_turno = 0;
+        while(inicio_turno != 1 && inicio_turno != 2){
         printf("Seleccione quién empieza el juego:\n");
         printf("1.\x1b[31mRojo.\n");
-        printf("\x1b[30m");
+        printf("\x1B[37m");
         printf("2.\x1b[32mVerde.\n");
-        printf("\x1b[30m");
+        printf("\x1B[37m");
         scanf("%d", &inicio_turno);
+        }
         if(inicio_turno == 2){
         	jugador_actual = VERDE;
         }else{
@@ -65,7 +68,7 @@ int main(){
         else{
         	printf("\x1b[32m VERDE.\n");
         }
-        printf("\x1b[30m");
+        printf("\x1B[37m");
         if(maquina == 1 && jugador_actual != jugador_color){
             //Si es jugador vs maquina y es el turno de la maquina;
             turno_maquina(jugador_actual);

@@ -75,16 +75,20 @@ void mostrar_tablero(){
 void leer_jugada(char* letra, char* numero){
 	char entrada[32]; // Array para almacenar la entrada del usuario
 
-    do {
+
         printf("Ingrese la letra: ");
         scanf("%s", entrada);
         *letra = entrada[0];
 
-        // Verifica si el entrada tiene solo un carácter alfabético
-        if (strlen(entrada) != 1 || !isalpha(*letra)) {
-            printf("Entrada no válida. Ingrese una letra válida (A, B, C, D, o E).\n");
+        while ((entrada[0] != 'A' || entrada[0] != 'a' || entrada[0] != 'E' || entrada[0] != 'e'||entrada[0] != 'I' || entrada[0] != 'i'||entrada[0] != 'O' || entrada[0] != 'o'||entrada[0] != 'U' || entrada[0] != 'u') && strlen(entrada) != 1  ){// Verifica si el entrada tiene solo un carácter alfabético
+        	if ((entrada[0] != 'A' || entrada[0] != 'a' || entrada[0] != 'E' || entrada[0] != 'e'||entrada[0] != 'I' || entrada[0] != 'i'||entrada[0] != 'O' || entrada[0] != 'o'||entrada[0] != 'U' || entrada[0] != 'u') && strlen(entrada) != 1  ) {
+        		printf("Entrada no válida. Ingrese una letra válida (A, B, C, D, o E).\n");
+        		printf("Ingrese la letra: ");
+        		scanf("%s", entrada);
+        		*letra = entrada[0];
+        	}
         }
-    } while (strlen(entrada) != 1 || !isalpha(*letra));
+
 
     // Limpia el búfer de entrada
     while (getchar() != '\n');
