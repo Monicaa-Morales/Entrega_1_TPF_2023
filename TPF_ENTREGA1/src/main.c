@@ -22,8 +22,10 @@ int main(){
         int opcion_color = 0;
         while(opcion_color != 1 && opcion_color!= 2){
         printf("Seleccione su color:\n");
-        printf("1. Rojo.\n");
-        printf("2. Verde.\n");
+        printf("1.\x1b[31mRojo.\n");
+        printf("\x1b[30m");
+        printf("2.\x1b[32mVerde.\n");
+        printf("\x1b[30m");
         scanf("%d",&opcion_color);
         }
 
@@ -33,8 +35,10 @@ int main(){
         	jugador_color = ROJO;
         }
         printf("Seleccione quién empieza el juego:\n");
-        printf("1. Rojo.\n");
-        printf("2. Verde.\n");
+        printf("1.\x1b[31mRojo.\n");
+        printf("\x1b[30m");
+        printf("2.\x1b[32mVerde.\n");
+        printf("\x1b[30m");
         scanf("%d", &inicio_turno);
         if(inicio_turno == 2){
         	jugador_actual = VERDE;
@@ -54,7 +58,14 @@ int main(){
             Captura si es posible
             Se retornan los dados capturados a sus duenhos
         */
-        printf("Es el turno del jugador %c\n", jugador_actual);
+        printf("Es el turno del jugador");
+        if (jugador_actual == ROJO){
+        	printf("\x1b[31m ROJO.\n");
+        }
+        else{
+        	printf("\x1b[32m VERDE.\n");
+        }
+        printf("\x1b[30m");
         if(maquina == 1 && jugador_actual != jugador_color){
             //Si es jugador vs maquina y es el turno de la maquina;
             turno_maquina(jugador_actual);
